@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #ecfeff;
+  --foreground: #164e63;
+  --card: #ffffff;
+  --card-foreground: #164e63;
+  --primary: #0891b2;
+  --primary-foreground: #000000;
+  --secondary: #22d3ee;
+  --secondary-foreground: #0f172a;
+  --accent: #059669;
+  --accent-foreground: #000000;
+  --muted: #e8f1f6;
+  --muted-foreground: #475569;
+  --border: #a5f3fc;
+  --ring: #0891b2;
+  --destructive: #dc2626;
+  --success: #15803d;
+  --warning: #b45309;
+  --info: #1d4ed8;
+  --control-radius: 8px;
+  --container-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #102a34;
+    --foreground: #e6f7fa;
+    --card: #173844;
+    --card-foreground: #e6f7fa;
+    --primary: #22d3ee;
+    --primary-foreground: #0f172a;
+    --secondary: #22d3ee;
+    --secondary-foreground: #0f172a;
+    --accent: #34d399;
+    --accent-foreground: #052e2b;
+    --muted: #1e4350;
+    --muted-foreground: #b6d3da;
+    --border: #35616d;
+    --ring: #67e8f9;
+    --destructive: #f87171;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --info: #93c5fd;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --radius-control: var(--control-radius);
+  --radius-container: var(--container-radius);
+  --font-heading: var(--font-body);
+  --font-sans: var(--font-body);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
