@@ -1,0 +1,1 @@
+CREATE INDEX `consultations_doctor_date_idx` ON `consultations` (`doctor_id`,`consultation_date`);

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ecfeff;
+  --foreground: #164e63;
+  --surface: #ffffff;
+  --primary: #08738a;
+  --primary-foreground: #ffffff;
+  --muted: #e8f1f6;
+  --muted-foreground: #475569;
+  --border: #a5dce2;
+  --ring: #08738a;
+  --destructive: #b91c1c;
+  --success: #166534;
+  --warning: #92400e;
+  --app-radius-control: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --font-heading: var(--font-display);
+  --font-sans: var(--font-body);
+  --radius-control: var(--app-radius-control);
+  --radius-container: calc(var(--radius-control) + 0.25rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #102b34;
+    --foreground: #e6f5f7;
+    --surface: #173b46;
+    --muted: #234b56;
+    --muted-foreground: #b7cdd1;
+    --border: #37616b;
+    --primary: #22b8ca;
+    --primary-foreground: #082f36;
+    --ring: #67e8f9;
+    --destructive: #f87171;
+    --success: #4ade80;
+    --warning: #fbbf24;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
