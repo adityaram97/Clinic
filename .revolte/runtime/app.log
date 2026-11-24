@@ -5,39 +5,27 @@
 ▲ Next.js 16.4.6 (Turbopack)
 - Local:         http://localhost:4173
 - Network:       http://0.0.0.0:4173
-✓ Ready in 275ms
-✓ Running next.config.ts took 22ms
+✓ Ready in 500ms
+✓ Running next.config.ts took 241ms
 
- GET /login 200 in 325ms (next.js: 133ms, application-code: 193ms)
- GET / 200 in 58ms (next.js: 14ms, application-code: 44ms)
-⚠ Blocked cross-origin request to Next.js dev resource /__nextjs_font/geist-latin.woff2 from "4173-ivup3yqvsxhz6i9v6pvsb.sandbox-v2.revolte.io".
-Cross-origin access to Next.js dev resources is blocked by default for safety.
-
-To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
-
-// next.config.js
-module.exports = {
-  allowedDevOrigins: ['4173-ivup3yqvsxhz6i9v6pvsb.sandbox-v2.revolte.io'],
-}
-
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- GET /login 200 in 32ms (next.js: 1.0ms, application-code: 31ms)
-⚠ Blocked cross-origin request to Next.js dev resource /_next/hmr from "4173-ivup3yqvsxhz6i9v6pvsb.sandbox-v2.revolte.io".
-Cross-origin access to Next.js dev resources is blocked by default for safety.
-
-To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
-
-// next.config.js
-module.exports = {
-  allowedDevOrigins: ['4173-ivup3yqvsxhz6i9v6pvsb.sandbox-v2.revolte.io'],
-}
-
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- POST /api/auth/login 401 in 684ms (next.js: 97ms, application-code: 587ms)
- GET / 200 in 35ms (next.js: 1.1ms, application-code: 34ms)
- POST /api/auth/login 303 in 269ms (next.js: 0.7ms, application-code: 268ms)
- GET /setup 200 in 41ms (next.js: 14ms, application-code: 27ms)
- GET /login 200 in 32ms (next.js: 0.8ms, application-code: 31ms)
- GET / 200 in 35ms (next.js: 1.4ms, application-code: 34ms)
- GET /login 200 in 35ms (next.js: 1.0ms, application-code: 34ms)
+ GET /login 200 in 387ms (next.js: 144ms, application-code: 243ms)
+ GET / 200 in 60ms (next.js: 14ms, application-code: 46ms)
+ GET /login 200 in 36ms (next.js: 0.9ms, application-code: 35ms)
+ GET / 200 in 25ms (next.js: 0.9ms, application-code: 24ms)
+ GET /login 200 in 27ms (next.js: 1.1ms, application-code: 26ms)
+ GET / 200 in 45ms (next.js: 2ms, application-code: 43ms)
+ GET /api/records?page=1 200 in 198ms (next.js: 144ms, application-code: 53ms)
+ GET /api/summary?date=2026-11-24 200 in 28ms (next.js: 16ms, application-code: 12ms)
+ GET /api/records?page=1 200 in 7ms (next.js: 1.4ms, application-code: 5ms)
+ GET /api/summary?date=2026-11-24 200 in 6ms (next.js: 1.0ms, application-code: 5ms)
+ POST /api/auth/logout 200 in 27ms (next.js: 16ms, application-code: 10ms)
+ GET /login 200 in 21ms (next.js: 3ms, application-code: 18ms)
+ GET /login 200 in 31ms (next.js: 1.2ms, application-code: 30ms)
+ POST /api/auth/login 200 in 568ms (next.js: 20ms, application-code: 548ms)
+ GET / 200 in 24ms (next.js: 1.4ms, application-code: 23ms)
+ GET / 200 in 40ms (next.js: 1.3ms, application-code: 39ms)
+ GET /api/summary?date=2026-11-24 200 in 6ms (next.js: 0.8ms, application-code: 5ms)
+ GET /api/records?page=1 200 in 4ms (next.js: 1.0ms, application-code: 4ms)
+ GET /api/summary?date=2026-11-24 200 in 7ms (next.js: 0.7ms, application-code: 6ms)
+ GET /api/records?page=1 200 in 5ms (next.js: 0.7ms, application-code: 4ms)
 [?25h

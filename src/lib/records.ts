@@ -58,6 +58,7 @@ export async function saveRecord(
     consultationDate: input.consultationDate,
     amountPaise: Math.round(input.amountRupees * 100),
     paymentMode: input.paymentMode,
+    clinicName: input.clinicName?.trim() || null,
     updatedAt: now,
   };
   if (recordId) {

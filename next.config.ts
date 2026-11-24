@@ -1,18 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["*.sandbox-v2.revolte.io"],
   async headers() {
     const scriptPolicy =
       process.env.NODE_ENV === "development"
         ? "'self' 'unsafe-inline' 'unsafe-eval'"
         : "'self' 'unsafe-inline'";
+    const connectPolicy =
+      process.env.NODE_ENV === "development"
+        ? "'self' ws://localhost:4173 wss://*.sandbox-v2.revolte.io"
+        : "'self'";
     const contentSecurityPolicy = [
       "default-src 'self'",
       `script-src ${scriptPolicy}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
-      "connect-src 'self'",
+      `connect-src ${connectPolicy}`,
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

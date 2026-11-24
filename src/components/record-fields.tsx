@@ -1,3 +1,5 @@
+import { today } from "@/lib/format";
+import { MAX_CLINIC_NAME_LENGTH } from "@/lib/constants";
 import type { RecordRow } from "@/lib/types";
 
 export function RecordFields({ record }: { record?: RecordRow }) {
@@ -14,12 +16,22 @@ export function RecordFields({ record }: { record?: RecordRow }) {
         />
       </label>
       <label className="grid gap-2 text-base font-medium">
+        Clinic name (optional)
+        <input
+          name="clinicName"
+          maxLength={MAX_CLINIC_NAME_LENGTH}
+          autoComplete="organization"
+          defaultValue={record?.clinicName ?? ""}
+          className="min-h-11 rounded-control border border-border bg-card px-3"
+        />
+      </label>
+      <label className="grid gap-2 text-base font-medium">
         Consultation date
         <input
           name="consultationDate"
           type="date"
           required
-          defaultValue={record?.consultationDate}
+          defaultValue={record?.consultationDate ?? today()}
           className="min-h-11 rounded-control border border-border bg-card px-3"
         />
       </label>

@@ -45,11 +45,14 @@ export default async function LoginPage({
           }
         />
         <p className="text-sm text-muted-foreground">
-          This app is for one doctor account on this installation.
+          Need another doctor account?{" "}
+          <Link
+            href="/setup"
+            className="font-semibold text-primary underline underline-offset-4"
+          >
+            Create account
+          </Link>
         </p>
-        <Link href="/" className="sr-only">
-          Back to consultation ledger
-        </Link>
       </section>
     </main>
   );

@@ -27,6 +27,7 @@ export const consultations = sqliteTable(
     consultationDate: text("consultation_date").notNull(),
     amountPaise: integer("amount_paise").notNull(),
     paymentMode: text("payment_mode", { enum: ["cash", "digital"] }).notNull(),
+    clinicName: text("clinic_name"),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull(),
   },

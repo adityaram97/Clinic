@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { currentDoctor } from "@/lib/auth";
-import { hasDoctorAccount } from "@/lib/account";
 import { AuthForm } from "@/components/auth-form";
 
 export const metadata: Metadata = {
-  title: "Set up doctor account | Clinic ledger",
+  title: "Create doctor account | Clinic ledger",
 };
 
 export const dynamic = "force-dynamic";
@@ -17,12 +16,8 @@ export default async function SetupPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const { error } = await searchParams;
-  const [doctorId, accountExists] = await Promise.all([
-    currentDoctor(),
-    hasDoctorAccount(),
-  ]);
+  const doctorId = await currentDoctor();
   if (doctorId) redirect("/");
-  if (accountExists) redirect("/login");
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4 py-10">
       <section className="w-full space-y-6 rounded-container border border-border bg-card p-6 shadow-sm sm:p-8">
@@ -31,11 +26,11 @@ export default async function SetupPage({
             Clinic ledger
           </p>
           <h1 className="mt-2 font-heading text-3xl font-semibold">
-            Set up your doctor account
+            Create a doctor account
           </h1>
           <p className="mt-2 text-base text-muted-foreground">
-            Create the account that protects consultation and payment records on
-            this installation.
+            Each doctor account keeps its consultation records separate from
+            others on this installation.
           </p>
         </div>
         <AuthForm

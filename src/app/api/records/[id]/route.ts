@@ -20,7 +20,7 @@ export async function PATCH(
   const parsed = consultationSchema.safeParse(input);
   if (!parsed.success)
     return NextResponse.json(
-      { error: "Check the patient, date, amount, and payment mode." },
+      { error: "Check the patient, clinic, date, amount, and payment mode." },
       { status: 400 },
     );
   const { id } = await context.params;

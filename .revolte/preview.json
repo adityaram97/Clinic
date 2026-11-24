@@ -10,7 +10,7 @@
     },
     {
       "name": "SQLite database schema",
-      "check": "test -f clinic.db",
+      "check": "node -e \"const D=require('better-sqlite3');const d=new D('clinic.db',{readonly:true,fileMustExist:true});const c=d.pragma('table_info(consultations)');d.close();process.exit(c.some(x=>x.name==='clinic_name')?0:1)\"",
       "run": "npm run db:migrate"
     }
   ],

@@ -15,6 +15,13 @@
       "when": 1795508668773,
       "tag": "0001_deep_black_bolt",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1795515995673,
+      "tag": "0002_friendly_stone_men",
+      "breakpoints": true
     }
   ]
 }

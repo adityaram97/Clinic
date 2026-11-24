@@ -107,7 +107,7 @@ test("doctor auth, records, ownership, editing and revenue summaries", async () 
       request("/api/auth/setup", {
         method: "POST",
         body: {
-          email: "another@example.test",
+          email: "doctor@example.test",
           password: "very-secure-password",
         },
       }),
@@ -162,11 +162,16 @@ test("doctor auth, records, ownership, editing and revenue summaries", async () 
           consultationDate: "2026-11-23",
           amountRupees: 1500,
           paymentMode: "cash",
+          clinicName: "North Clinic",
         },
       }),
     );
     assert.equal(cashResponse.status, 201);
-    const cashRecord = (await cashResponse.json()) as { id: string };
+    const cashRecord = (await cashResponse.json()) as {
+      id: string;
+      clinicName: string | null;
+    };
+    assert.equal(cashRecord.clinicName, "North Clinic");
 
     const edited = await updateRecord(
       request(`/api/records/${cashRecord.id}`, {
@@ -177,11 +182,14 @@ test("doctor auth, records, ownership, editing and revenue summaries", async () 
           consultationDate: "2026-11-23",
           amountRupees: 1650,
           paymentMode: "cash",
+          clinicName: "City Clinic",
         },
       }),
       { params: Promise.resolve({ id: cashRecord.id }) },
     );
     assert.equal(edited.status, 200);
+    const editedData = (await edited.json()) as { clinicName: string | null };
+    assert.equal(editedData.clinicName, "City Clinic");
 
     const digitalResponse = await createRecord(
       request("/api/records", {
@@ -201,10 +209,11 @@ test("doctor auth, records, ownership, editing and revenue summaries", async () 
       request("/api/records", { cookie }),
     );
     const list = (await recordsResponse.json()) as {
-      items: Array<{ amountPaise: number }>;
+      items: Array<{ amountPaise: number; clinicName: string | null }>;
       total: number;
     };
     assert.equal(list.total, 2);
+    assert.ok(list.items.some((record) => record.clinicName === "City Clinic"));
     assert.deepEqual(
       list.items.map((record) => record.amountPaise).sort(),
       [165000, 260000],

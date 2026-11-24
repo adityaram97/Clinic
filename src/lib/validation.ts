@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { paymentModes } from "@/lib/constants";
+import { MAX_CLINIC_NAME_LENGTH, paymentModes } from "@/lib/constants";
 
 export const isoDateSchema = z.iso.date("Choose a valid date.");
 
@@ -17,6 +17,7 @@ export const consultationSchema = z.object({
       "Enter no more than two decimal places.",
     ),
   paymentMode: z.enum(paymentModes),
+  clinicName: z.string().trim().max(MAX_CLINIC_NAME_LENGTH).optional(),
 });
 
 export const credentialsSchema = z.object({

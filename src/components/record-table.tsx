@@ -34,6 +34,9 @@ export function RecordTable({
               Patient
             </th>
             <th scope="col" className="px-4 py-3 font-medium">
+              Clinic
+            </th>
+            <th scope="col" className="px-4 py-3 font-medium">
               Date
             </th>
             <th scope="col" className="px-4 py-3 font-medium">
@@ -56,6 +59,7 @@ export function RecordTable({
               <th scope="row" className="px-4 py-3 font-medium">
                 {record.patientName}
               </th>
+              <td className="px-4 py-3">{record.clinicName ?? "—"}</td>
               <td className="px-4 py-3 tabular-nums">
                 {new Intl.DateTimeFormat("en-IN", {
                   day: "2-digit",

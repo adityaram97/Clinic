@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import bcrypt from "bcryptjs";
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { doctors } from "@/lib/db/schema";
 import { credentialsSchema } from "@/lib/validation";
@@ -12,29 +12,24 @@ export async function createDoctor(input: unknown) {
   if (!parsed.success)
     return { ok: false as const, error: "Check your email and password." };
   const passwordHash = await bcrypt.hash(parsed.data.password, 12);
-  return db.transaction((transaction) => {
-    const [existing] = transaction
-      .select({ count: sql<number>`count(*)` })
-      .from(doctors)
-      .all();
-    if ((existing?.count ?? 0) > 0) {
-      return {
-        ok: false as const,
-        error: "Doctor account setup is already complete.",
-      };
-    }
-    const doctorId = randomUUID();
-    transaction
-      .insert(doctors)
-      .values({
-        id: doctorId,
-        email: parsed.data.email,
-        passwordHash,
-        createdAt: new Date().toISOString(),
-      })
-      .run();
-    return { ok: true as const, doctorId };
-  });
+  const [doctor] = await db
+    .insert(doctors)
+    .values({
+      id: randomUUID(),
+      email: parsed.data.email,
+      passwordHash,
+      createdAt: new Date().toISOString(),
+    })
+    .onConflictDoNothing({ target: doctors.email })
+    .returning({ id: doctors.id });
+  if (!doctor) {
+    return {
+      ok: false as const,
+      error:
+        "An account with this email already exists. Sign in or use another email.",
+    };
+  }
+  return { ok: true as const, doctorId: doctor.id };
 }
 
 export async function verifyDoctor(input: unknown) {

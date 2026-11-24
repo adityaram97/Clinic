@@ -4,4 +4,5 @@ export type RecordRow = {
   consultationDate: string;
   amountPaise: number;
   paymentMode: "cash" | "digital";
+  clinicName: string | null;
 };
